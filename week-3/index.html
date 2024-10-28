@@ -1,0 +1,39 @@
+<html>
+
+<body>
+    <h1>Todo list</h1>
+    <div id="todos">
+      <input id="inp" type="text"></input>
+      <button onclick="addTodo()">Add Todo</button>
+    </div>
+</body>
+<script>
+  let ctr = 1;
+
+  function addTodo() {
+    const inputEl = document.getElementById("inp");
+    const value = inputEl.value;
+
+    const newDivEl = document.createElement("div");
+    newDivEl.setAttribute("id", ctr); 
+
+
+    newDivEl.innerHTML = "<div>" + value + '</div><button onclick="deleteTodo(' + ctr + ')">delete</button>';
+    
+    const parentEl = document.getElementById("todos");
+    parentEl.appendChild(newDivEl);
+    
+    ctr = ctr + 1;  
+  }
+
+  function deleteTodo(index) {
+    const element = document.getElementById(index);
+    if (element) {
+      element.parentNode.removeChild(element);
+    } else {
+      console.log("Element not found");
+    }
+  }
+</script>
+
+</html>
